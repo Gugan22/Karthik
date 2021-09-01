@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="img/favicon.png">
+    
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap-datepicker/jquery.mobile.datepicker.css">
+    <link rel="stylesheet" href="vendors/bootstrap-datepicker/jquery.mobile.datepicker.theme.css">
+    <link rel="stylesheet" href="vendors/elagent-icon/style.css">
+    <link rel="stylesheet" href="vendors/themfiy/themify-icons.css">
+    <link rel="stylesheet" href="vendors/simple-line-icon/simple-line-icons.css">
+    <link rel="stylesheet" href="vendors/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="vendors/slick/slick.css">
+    <link rel="stylesheet" href="vendors/slick/slick-theme.css">
+    <link rel="stylesheet" href="vendors/animation/animate.css">
+    <link rel="stylesheet" href="vendors/calender/dcalendar.picker.css">
+    <link rel="stylesheet" href="vendors/magnify-popup/magnific-popup.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <title>SafeOneWayTrack</title>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script>
+  function SubFormMine (){
+      console.log($("#myForm").serializeArray());
+      $.ajax({
+          url:'https://api.apispreadsheets.com/data/17396/',
+         type:'post',
+          data:$("#myForm").serializeArray(),
+          success: function(){
+            alert("Form Data Submitted :)")
+            $("#myForm").trigger('reset');
+          },
+          error: function(){
+            alert("There was an error :(  Please call us to book immediately")
+          }
+      });
+  }
+
+  function helpForm (){
+          console.log("hello");
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/17530/",
+				type:"post",
+				data:$("#contactForms").serializeArray(),
+				success: function(){
+					alert("Form Data Submitted :)")
+                    $("#contactForms").trigger('reset');
+				},
+				error: function(){
+					alert("There was an error :( Please call us to book immediately")
+				}
+			});
+		}
+
+  /* 
+Adiciona/Remove a classe 'floating-aberto', 
+executando o efeito no menu flutuante
+*/ 
+$('#floating-icon').click(function(){
+  $('#floating-ligar').toggle();
+  $('#floating-whatsapp').toggle();
+  $('#floating-emergencia').toggle();
+});
+
+  </script>
+
+
+</head>
+
+<body>
+
+    
+
+
+    <div class="sampleContainer">
+        <div class="loading">
+            <img src="img/loader_5.gif" alt="">
+            <h2>Loading
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </h2>
+        </div>
+    </div>
+
+    <div id="floating-menu">
+        <div id="floating-icon" style="padding: 10px;">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="floating-ligar" style="display: block;">
+          <a href="tel: 9629708226">
+            <svg class="svg-inline--fa fa-phone fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M493.397 24.615l-104-23.997c-11.314-2.611-22.879 3.252-27.456 13.931l-48 111.997a24 24 0 0 0 6.862 28.029l60.617 49.596c-35.973 76.675-98.938 140.508-177.249 177.248l-49.596-60.616a24 24 0 0 0-28.029-6.862l-111.997 48C3.873 366.516-1.994 378.08.618 389.397l23.997 104C27.109 504.204 36.748 512 48 512c256.087 0 464-207.532 464-464 0-11.176-7.714-20.873-18.603-23.385z"></path></svg><!-- <i class="fas fa-phone"></i> -->	
+          </a>
+        </div>
+        <div id="floating-whatsapp" style="display: block;">
+          <a href="https://api.whatsapp.com/send?phone=9629708226">
+            <svg class="svg-inline--fa fa-whatsapp fa-w-14" aria-hidden="true" data-prefix="fab" data-icon="whatsapp" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg><!-- <i class="fab fa-whatsapp"></i> -->
+          </a>
+        </div>
+       
+      
+      <div id="floating-ligar" style="display: none;">
+        <a href="tel: 9629708226">
+          <svg class="svg-inline--fa fa-phone fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M493.397 24.615l-104-23.997c-11.314-2.611-22.879 3.252-27.456 13.931l-48 111.997a24 24 0 0 0 6.862 28.029l60.617 49.596c-35.973 76.675-98.938 140.508-177.249 177.248l-49.596-60.616a24 24 0 0 0-28.029-6.862l-111.997 48C3.873 366.516-1.994 378.08.618 389.397l23.997 104C27.109 504.204 36.748 512 48 512c256.087 0 464-207.532 464-464 0-11.176-7.714-20.873-18.603-23.385z"></path></svg><!-- <i class="fas fa-phone"></i> -->	
+        </a>
+      </div>
+      <div id="floating-whatsapp" style="display: none;">
+        <a href="https://api.whatsapp.com/send?phone=9629708226">
+          <svg class="svg-inline--fa fa-whatsapp fa-w-14" aria-hidden="true" data-prefix="fab" data-icon="whatsapp" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg><!-- <i class="fab fa-whatsapp"></i> -->
+        </a>
+      </div>
+      
+      
+      <div class="modal fade col-lg-12" id="modalUrgencia" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" class="fechaModal" data-dismiss="modal">×</button>
+            <div class="modal-body">
+      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <header class="header_area header_transparent">
+        <div class="container-fluid d-flex">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a href="#" class="logo"><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""></a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu mr-auto">
+<!--                        <li class="nav-item dropdown submenu active">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Home
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home V1</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="index2.html">Home V2</a></li>
+                            </ul>
+                        </li>               -->
+                        <li class="nav-item"><a class="nav-link" href="get-taxi.html">Get Taxi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">Tariff</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Queries..?</a></li>
+                    </ul>
+                    <div class="phone_btn"><a href="tel:9629708226"><span>+91</span> 9629708226</a></div>
+                </div>
+            </nav>
+            <div class="menu_btn">
+               
+                <a href="#" class="book_btn">Book a Ride</a>
+            </div> 
+        </div>
+    </header>
+
+    <section class="slider_area d-flex align-items-center">
+        <div class="ovarlay"></div>
+        <div class="background_slider slick">
+            <div class="bg_img" style="background: url(img/slider/slider1.jpg) center center / cover no-repeat scroll;"></div>
+            <div class="bg_img" style="background: url(img/slider/slider2.jpg) center center / cover no-repeat scroll;"></div>
+            <div class="bg_img" style="background: url(img/slider/slider3.jpg) center center / cover no-repeat scroll;"></div>
+        </div>
+        <div class="container">
+            <div class="slider_text text-center">
+                <h1></h1>
+                <h1>Time is Precious. <br> DoN'T wate  it on Commuting..!</h1>
+                <a href="#bookingForm" class="btn slider_btn yellow_hover">Book your ride</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking_form_area bg_one" id="bookingForm">
+        <div class="container">
+            <div class="booking_slider slick">
+                <div class="booking_form_info">
+                    <div class="tab_img">
+                        <div class="b_overlay_bg"></div>
+                        <img src="img/slider/booking_car.png" alt="">
+                    </div>
+                    <div class="boking_content">
+                        <h2>Book here and We'll reach you in a moment.</h2>
+                        <form class="row booking_form" id="myForm">
+                            <div class="col-md-12">
+                                <div class="form-group choose_item">
+                                    <label>
+                                        <input type="radio" value="standard" name="cab" >
+                                        <span>Standard</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="economy" name="cab" checked >
+                                        <span>ECONOMY</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="vip" name="cab" >
+                                        <span>VIP</span>
+                                    </label>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="&#xe08a  Your Name" name="Name"  required>
+                                    <label class="border_line"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="&#xe090  Phone" name="Contact" required>
+                                    <label class="border_line"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6"> 
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="&#xe01d  Start Destination" name="PickUp" required>
+                                    <label class="border_line"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="&#xe01d  End Destination" name="Drop" required>
+                                    <label class="border_line"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control date-input-css" placeholder="&#xe06b  Time and Date" name="PikupDate" required> 
+                                    <label class="border_line"></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select type="text" class="form-control" placeholder="&#xe06b  Trip" name="Trip">
+                                    <label class="border_line"></label>
+                                    <option value="Oneway">OneWay</option>
+                                    <option value="Oneway">Round</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"> 
+                                    <textarea class="form-control" placeholder="&#xe06b  Extra Reequirements" name="Requirements"> </textarea>
+                                    <label class="border_line"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                 <a class="btn slider_btn dark_hover" onclick="SubFormMine()">Book Now !</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+       
+    <section class="city_location_area sec_pad" id="tariff">
+        <div class="container">
+            <div class="section_title text-center">
+                <h5>Let's go With us</h5>
+                <h2>Our Tariffs</h2>
+            </div>
+            <div class="city_location_tab">
+                <div class="tab-content" id="myTabContent2">
+                    <div class="tab-pane fade show active" id="taxi" role="tabpanel" aria-labelledby="taxi-tab">
+                        <ul class="nav nav-tabs booking_quality_tab" role="tablist">
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" id="four-tab" data-toggle="tab" href="#one" role="tab" aria-controls="four" aria-selected="false" aria-checked="true">Comfort</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="five-tab" data-toggle="tab" href="#two" role="tab" aria-controls="five" aria-selected="false">Premium</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="six-tab" data-toggle="tab" href="#three" role="tab" aria-controls="six" aria-selected="false">Economy</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content boking_information">
+                            <div class="tab-pane fade show active" id="one" role="tabpanel" aria-labelledby="one-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Oneway Trip</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.13<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Change</h4>
+                                            </div>
+                                         <div class="mile">
+                                                Rs.300<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Round Trip</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.10<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Charge</h4>
+                                               </div>
+                                            <div class="mile">
+                                                Rs.300<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Oneway Trip (Any)</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.17<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Change</h4>
+                                            </div>
+                                         <div class="mile">
+                                                Rs.400<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Oneway Trip (Innova)</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.18<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Change</h4>
+                                            </div>
+                                         <div class="mile">
+                                                Rs.400<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Round Trip</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.14<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Charge</h4>
+                                               </div>
+                                            <div class="mile">
+                                                Rs.400<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="three-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Oneway Trip</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.13<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Change</h4>
+                                            </div>
+                                         <div class="mile">
+                                                Rs.300<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Round Trip</h4>
+                                            </div>
+                                            <div class="mile">
+                                                Rs.10<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Service Charge</h4>
+                                               </div>
+                                            <div class="mile">
+                                                Rs.300<span>/ day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="plan" role="tabpanel" aria-labelledby="plan-tab">
+                        <ul class="nav nav-tabs booking_quality_tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="ten-tab" data-toggle="tab" href="#ten" role="tab" aria-controls="ten" aria-selected="false">Comfort</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="eleven-tab" data-toggle="tab" href="#eleven" role="tab" aria-controls="eleven" aria-selected="false">Premium</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="twelve-tab" data-toggle="tab" href="#twelve" role="tab" aria-controls="twelve" aria-selected="false">Economy</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content boking_information">
+                            <div class="tab-pane fade show active" id="seven" role="tabpanel" aria-labelledby="seven-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="eight" role="tabpanel" aria-labelledby="eight-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nine" role="tabpanel" aria-labelledby="nine-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="ten" role="tabpanel" aria-labelledby="ten-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="eleven" role="tabpanel" aria-labelledby="eleven-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="twelve" role="tabpanel" aria-labelledby="twelve-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bike" role="tabpanel" aria-labelledby="bike-tab">
+                        <ul class="nav nav-tabs booking_quality_tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" id="sixteenth-tab" data-toggle="tab" href="#sixteenth" role="tab" aria-controls="sixteenth" aria-selected="false">Comfort</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="seventeen-tab" data-toggle="tab" href="#seventeen" role="tab" aria-controls="seventeen" aria-selected="false">Premium</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="eightteen-tab" data-toggle="tab" href="#eightteen" role="tab" aria-controls="eightteen" aria-selected="false">Economy</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content boking_information">
+                            <div class="tab-pane fade show active" id="thirteenth" role="tabpanel" aria-labelledby="thirteenth-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="fourteenth" role="tabpanel" aria-labelledby="fourteenth-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $0,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="fifteenth" role="tabpanel" aria-labelledby="fifteenth-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="sixteenth" role="tabpanel" aria-labelledby="sixteenth-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="seventeen" role="tabpanel" aria-labelledby="seventeen-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="eightteen" role="tabpanel" aria-labelledby="eightteen-tab">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $6<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Taxi drivers for hire in your city</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>New bigger & better F.A.Q. section.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $1.3<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Choose Advertising Position</h4>
+                                                <p>Come to our storage and pick your item.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $8<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>How to Get Discount With Mobile Application</h4>
+                                                <p>Remember when did you lose it.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $2,4<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="media location-milage">
+                                            <div class="media-body">
+                                                <h4>Get the Best Price Of Taxi In Your Place</h4>
+                                                <p>We will bring you quickly and comfortably in your city.</p>
+                                            </div>
+                                            <div class="mile">
+                                                $4,2<span>/ km</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <section class="advantage_area bg_one" id="serviceAdvantage">
+        <div class="container">
+            <div class="section_title text-center">
+                <h5>Main Features</h5>
+                <h2>Our Advantages</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                     <div class="advantage_item">
+                         <i class="flaticon-gear"></i>
+                         <h3>100% Safe</h3>
+                         <p>Providing your safe and secure travel considering your physical and mental health.</p>
+                     </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                     <div class="advantage_item">
+                         <i class="flaticon-travel"></i>
+                         <h3>Lots of locations</h3>
+                         <p>Providing service over wide locations in India are accessible and commute anywhere.</p>
+                     </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                     <div class="advantage_item">
+                         <i class="flaticon-car"></i>
+                         <h3>Luxury Cars</h3>
+                         <p>Comfortable journey keeps you fresh and you can choose any range of cars. </p>
+                     </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                     <div class="advantage_item">
+                         <i class="flaticon-bag"></i>
+                         <h3>Ontime Services</h3>
+                         <p>Reach ontime to your destination. We keep our punctuality in check.</p>
+                     </div>
+                </div>
+            </div>
+            <div class="car_img">
+                <img class="car_one wow caranimationTwo" data-wow-delay="0.3s" src="img/car/car_01.png" alt="">
+                <img class="car_two wow caranimationOne" data-wow-delay="1s" src="img/car/car_02.png" alt="">
+            </div>
+        </div>
+    </section>
+  
+    <section class="call_action_area" id="reachAction">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="action_img">
+                        <div class="overlay_bg"></div>
+                        <img src="img/action_img.jpg.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex align-items-center">
+                    <div class="action_content">
+                        <h3>Reach us</h3>
+                        <a href="#tel:9629708226" class="call_btn">+91 9629708226</a>
+                        <p>Just call us directly if there is an emergency.</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  
+    <section class="contact_area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 map_area">
+                     <div class="app_contact_info">
+                        <span class="triangle"></span>
+                        <div class="info_item">
+                            <i class="ti-location-pin"></i>
+                            <h6>Address:</h6>
+                            <p>107, Janatha Colony,  <br> Periya Semoor, Erode.</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="ti-mobile"></i>
+                            <h6>Phone:</h6>
+                            <p><a href="tel:9629708226">+91 9629708226</a></p>
+                        </div>
+                        <div class="info_item">
+                            <i class="ti-email"></i>
+                            <h6>Email:</h6>
+                            <p><a href="mailto:">safeonewaytrack.taxi@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p0">
+                    <div class="contact_info">
+                        <div class="section_title">
+                            <h5>HOW CAN WE HELP YOU?</h5>
+                            <h2>Have a Questions?</h2>
+                        </div>
+                        <form  method="post" id="contactForms" novalidate="novalidate" class="contact_form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" name="Name" placeholder="Your Name">
+                                <label class="border_line"></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email" name="eMail" placeholder="Your Email">
+                                <label class="border_line"></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" name="Subject" placeholder="Subject">
+                                <label class="border_line"></label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" cols="30" rows="10" class="Query" placeholder="Your Message"></textarea>
+                                <label class="border_line"></label>
+                            </div>
+                            <div class="form-group">
+                                <a  class="slider_btn yellow_hover" onclick="helpForm()">Send Message</a>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    <footer class="footer_area sec_pad">
+        <div class="container">
+            <div class="row">
+             
+            </div>
+        </div>
+    </footer>
+   
+    <!--================Contact Success and Error message Area =================-->
+    <div id="success" class="modal modal-message fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+                    <h2 class="modal-title">Thank you</h2>
+                    <p class="modal-subtitle">Your message is successfully sent...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals error -->
+
+    <div id="error" class="modal modal-message fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+                    <h2 class="modal-title">Sorry</h2>
+                    <p class="modal-subtitle"> Something went wrong </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--================End Contact Success and Error message Area =================-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendors/slick/slick.min.js"></script>
+    <script src="vendors/calender/dcalendar.picker.js"></script>
+    <script src="vendors/bootstrap-datepicker/datepicker.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="vendors/magnify-popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <!-- contact js -->
+    <script src="js/custom.js"></script>
+
+
+</body>
+
+
+</html>
